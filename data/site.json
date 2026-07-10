@@ -1,0 +1,25 @@
+{
+  "siteName": "Site Framework",
+  "pageTitle": "个人网站框架",
+  "description": "一个使用原生 HTML、CSS 与 JavaScript 构建的可扩展静态网站框架。",
+  "language": "zh-CN",
+  "hero": {
+    "eyebrow": "可持续扩展的静态网站",
+    "title": "内容与页面结构彼此分离。",
+    "description": "这里是示例占位说明。以后只需添加 Markdown、图片和一条 JSON 记录，首页即可自动生成内容卡片。",
+    "primaryAction": {
+      "label": "查看示例",
+      "href": "#projects"
+    },
+    "secondaryAction": {
+      "label": "了解结构",
+      "href": "#about"
+    }
+  },
+  "about": {
+    "title": "为未来内容预留空间",
+    "description": "这里暂时只说明网站结构，不填充真实个人资料。后续可以更新此处配置，并替换 content/about/index.md。",
+    "file": "content/about/index.md"
+  },
+  "footerText": "原生 HTML、CSS 与 JavaScript，无构建步骤。"
+}
