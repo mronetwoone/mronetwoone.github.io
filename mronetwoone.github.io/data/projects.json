@@ -1,0 +1,15 @@
+{
+  "items": [
+    {
+      "id": "example-project",
+      "title": "示例项目：内容驱动卡片",
+      "summary": "这是一条用于验证 JSON 读取、卡片生成与 Markdown 跳转流程的示例数据。",
+      "date": "2026-07-10",
+      "tags": ["示例内容", "静态网站"],
+      "status": "示例",
+      "cover": "content/projects/example-project/images/cover.svg",
+      "file": "content/projects/example-project/index.md",
+      "featured": true
+    }
+  ]
+}
