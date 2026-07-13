@@ -27,13 +27,47 @@
     return new URL("./", markdownUrl);
   };
 
-  const isUnsafeScheme = (value) => /^(?:javascript|data|vbscript|file):/i.test(value.trim());
+  const isUnsafeScheme = (value) =>
+    /^(?:javascript|data|vbscript|file):/i.test(value.trim());
+
+  // 从首页进入文章时，返回首页使用历史返回，
+  // 避免重新加载首页和再次显示加载画面。
+  const setupSmartHomeReturn = () => {
+    const siteRoot = new URL("./", window.location.href);
+    const homePaths = new Set([
+      siteRoot.pathname,
+      new URL("index.html", siteRoot).pathname
+    ]);
+
+    document.addEventListener("click", (event) => {
+      const link = event.target.closest('a[href="index.html"]');
+
+      if (!link || !document.referrer || window.history.length <= 1) {
+        return;
+      }
+
+      try {
+        const previousPage = new URL(document.referrer);
+        const cameFromHome =
+          previousPage.origin === window.location.origin
+          && homePaths.has(previousPage.pathname);
+
+        if (!cameFromHome) return;
+
+        event.preventDefault();
+        window.history.back();
+      } catch {
+        // 无法确认来源时，继续使用 index.html 正常返回首页。
+      }
+    });
+  };
 
   const normalizeRenderedContent = (root, markdownPath) => {
     const baseUrl = markdownBaseUrl(markdownPath);
 
     root.querySelectorAll("img[src]").forEach((image) => {
       const source = image.getAttribute("src")?.trim() || "";
+
       if (!source || isUnsafeScheme(source)) {
         image.replaceWith(document.createTextNode("[图片路径无效]"));
         return;
@@ -41,7 +75,11 @@
 
       try {
         const resolved = new URL(source, baseUrl);
-        if (!/^https?:$/.test(resolved.protocol)) throw new Error("Unsupported image protocol");
+
+        if (!/^https?:$/.test(resolved.protocol)) {
+          throw new Error("Unsupported image protocol");
+        }
+
         image.src = resolved.href;
         image.loading = "lazy";
         image.decoding = "async";
@@ -52,6 +90,7 @@
 
     root.querySelectorAll("a[href]").forEach((link) => {
       const href = link.getAttribute("href")?.trim() || "";
+
       if (!href || isUnsafeScheme(href)) {
         link.removeAttribute("href");
         return;
@@ -62,7 +101,11 @@
 
       try {
         const resolved = new URL(href, baseUrl);
-        if (!/^https?:$/.test(resolved.protocol)) throw new Error("Unsupported link protocol");
+
+        if (!/^https?:$/.test(resolved.protocol)) {
+          throw new Error("Unsupported link protocol");
+        }
+
         link.href = resolved.href;
 
         if (resolved.origin !== window.location.origin) {
@@ -75,6 +118,7 @@
     });
 
     const usedIds = new Map();
+
     root.querySelectorAll("h1, h2, h3, h4, h5, h6").forEach((heading) => {
       const base = heading.textContent
         .trim()
@@ -111,10 +155,13 @@
   };
 
   const updateProgress = () => {
-    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollable =
+      document.documentElement.scrollHeight - window.innerHeight;
+
     const value = scrollable > 0
       ? Math.min(100, Math.max(0, (window.scrollY / scrollable) * 100))
       : 0;
+
     progressBar.style.width = `${value}%`;
   };
 
@@ -134,6 +181,7 @@
       .replace(/\r\n?/g, "\n");
 
     const unsafeHtml = window.marked.parse(normalizedMarkdown);
+
     const safeHtml = window.DOMPurify.sanitize(unsafeHtml, {
       USE_PROFILES: { html: true },
       ADD_ATTR: ["target", "rel", "loading", "decoding"]
@@ -141,20 +189,26 @@
 
     const template = document.createElement("template");
     template.innerHTML = safeHtml;
+
     normalizeRenderedContent(template.content, markdownPath);
     article.replaceChildren(template.content);
 
     const firstHeading = article.querySelector("h1, h2, h3");
+
     document.title = firstHeading
       ? `${firstHeading.textContent.trim()} · Site Framework`
       : "Site Framework";
   };
 
   const loadArticle = async () => {
-    const file = new URLSearchParams(window.location.search).get("file");
+    const file =
+      new URLSearchParams(window.location.search).get("file");
 
     if (!isSafeMarkdownPath(file)) {
-      showError("无法加载此内容", "只允许读取 content 目录中的 Markdown 文件。");
+      showError(
+        "无法加载此内容",
+        "只允许读取 content 目录中的 Markdown 文件。"
+      );
       return;
     }
 
@@ -164,12 +218,17 @@
         credentials: "same-origin"
       });
 
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
       const markdown = await response.text();
+
       renderMarkdown(markdown, file);
       updateProgress();
     } catch (error) {
       console.error("Failed to load Markdown:", error);
+
       showError(
         "内容加载失败",
         "文件不存在、网络暂不可用，或 Markdown 渲染组件没有成功加载。请稍后重试。"
@@ -177,7 +236,12 @@
     }
   };
 
-  window.addEventListener("scroll", updateProgress, { passive: true });
+  window.addEventListener("scroll", updateProgress, {
+    passive: true
+  });
+
   window.addEventListener("resize", updateProgress);
+
+  setupSmartHomeReturn();
   loadArticle();
 })();
