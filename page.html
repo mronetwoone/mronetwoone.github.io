@@ -9,22 +9,39 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/animations.css">
   <link rel="stylesheet" href="assets/css/markdown.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked@18.0.6/lib/marked.umd.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.4.11/dist/purify.min.js" defer></script>
   <script src="assets/js/page.js" defer></script>
 </head>
 <body class="article-page">
-  <div class="reading-progress" aria-hidden="true"><span id="reading-progress-bar"></span></div>
+  <div class="reading-progress" aria-hidden="true">
+    <span id="reading-progress-bar"></span>
+  </div>
+
   <a class="skip-link" href="#article-content">跳到正文</a>
+
   <header class="article-header">
     <div class="container article-nav">
-      <a class="back-link" href="index.html"><span aria-hidden="true">←</span> 返回首页</a>
+      <a class="back-link" href="index.html">
+        <span aria-hidden="true">←</span> 返回首页
+      </a>
       <span class="article-label">Markdown Reader</span>
     </div>
   </header>
+
   <main class="article-shell container">
     <article class="markdown-body" id="article-content" aria-live="polite">
-      <div class="article-status"><span class="status-spinner" aria-hidden="true"></span><p>正在加载内容…</p></div>
+      <div class="article-status">
+        <span class="status-spinner" aria-hidden="true"></span>
+        <p>正在加载内容…</p>
+      </div>
     </article>
   </main>
-  <footer class="article-footer container"><a class="back-link" href="index.html"><span aria-hidden="true">←</span> 返回首页</a></footer>
+
+  <footer class="article-footer container">
+    <a class="back-link" href="index.html">
+      <span aria-hidden="true">←</span> 返回首页
+    </a>
+  </footer>
 </body>
 </html>
