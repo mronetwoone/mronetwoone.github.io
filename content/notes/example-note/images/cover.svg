@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title id="title">示例文章封面</title>
+  <desc id="desc">抽象的纸张与文本线条插图。</desc>
+  <rect width="800" height="600" fill="#eee9df"/>
+  <circle cx="120" cy="510" r="210" fill="#a4cdbe" opacity=".6"/>
+  <path d="M220 84h360c39 0 70 31 70 70v370H220c-39 0-70-31-70-70V154c0-39 31-70 70-70z" fill="#fff" stroke="#20231f" stroke-width="4"/>
+  <rect x="230" y="176" width="270" height="28" rx="14" fill="#315f52"/>
+  <rect x="230" y="248" width="340" height="14" rx="7" fill="#315f52" opacity=".32"/>
+  <rect x="230" y="286" width="292" height="14" rx="7" fill="#315f52" opacity=".23"/>
+  <rect x="230" y="324" width="320" height="14" rx="7" fill="#315f52" opacity=".23"/>
+  <rect x="230" y="390" width="120" height="42" rx="21" fill="#e8c7a5"/>
+</svg>

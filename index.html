@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="一个可长期扩展的个人网站基础框架。">
+  <meta name="theme-color" content="#f7f7f2">
+  <title>个人网站框架</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">跳到主要内容</a>
+  <header class="site-header" id="site-header">
+    <nav class="nav container" aria-label="主导航">
+      <a class="brand" href="index.html" data-site-name>Site Framework</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+        <span class="sr-only">打开导航菜单</span><span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="nav-links"><a href="#projects">项目</a><a href="#notes">内容</a><a href="#about">关于</a></div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero section" aria-labelledby="hero-title">
+      <div class="glow glow-one" aria-hidden="true"></div><div class="glow glow-two" aria-hidden="true"></div>
+      <div class="container hero-content reveal">
+        <p class="eyebrow" id="hero-eyebrow">可持续扩展的静态网站</p>
+        <h1 id="hero-title">内容与页面结构彼此分离。</h1>
+        <p class="hero-description" id="hero-description">这里是示例占位说明。后续只需添加 Markdown 和一条 JSON 记录。</p>
+        <div class="hero-actions">
+          <a class="button button-primary" id="hero-primary" href="#projects">查看示例</a>
+          <a class="button button-secondary" id="hero-secondary" href="#about">了解结构</a>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#projects" aria-label="滚动到项目区域"><span></span></a>
+    </section>
+
+    <section class="section section-bordered" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section-heading reveal"><div><p class="eyebrow">Projects</p><h2 id="projects-title">项目</h2></div><p>卡片由 <code>data/projects.json</code> 自动生成。</p></div>
+        <div class="card-grid" id="projects-grid" aria-live="polite"><p class="loading-state">正在加载项目…</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="notes" aria-labelledby="notes-title">
+      <div class="container">
+        <div class="section-heading reveal"><div><p class="eyebrow">Notes</p><h2 id="notes-title">文章与内容</h2></div><p>卡片由 <code>data/notes.json</code> 自动生成。</p></div>
+        <div class="card-grid" id="notes-grid" aria-live="polite"><p class="loading-state">正在加载内容…</p></div>
+      </div>
+    </section>
+
+    <section class="section section-accent" id="about" aria-labelledby="about-title">
+      <div class="container about-layout reveal">
+        <p class="section-index" aria-hidden="true">03</p>
+        <div><p class="eyebrow">About</p><h2 id="about-title">关于这个位置</h2><p class="about-description" id="about-description">这里暂时只保留结构说明，不填充真实个人资料。</p><a class="text-link" id="about-link" href="page.html?file=content/about/index.md">阅读示例说明 <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-inner"><p>? <span id="current-year"></span> <span data-site-name>Site Framework</span></p><p id="footer-text">原生 HTML、CSS 与 JavaScript。</p></div></footer>
+</body>
+</html>

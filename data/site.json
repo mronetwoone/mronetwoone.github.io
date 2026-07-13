@@ -1,0 +1,25 @@
+{
+  "siteName": "🐴的仓库",
+  "pageTitle": "小马同学",
+  "description": "一个使用原生 HTML、CSS 与 JavaScript 构建的可扩展静态网站框架。",
+  "language": "zh-CN",
+  "hero": {
+    "eyebrow": "可持续扩展的静态网站",
+    "title": "学习永无止境。",
+    "description": "日常笔记。",
+    "primaryAction": {
+      "label": "查看笔记",
+      "href": "#projects"
+    },
+    "secondaryAction": {
+      "label": "杂项",
+      "href": "#about"
+    }
+  },
+  "about": {
+    "title": "为未来内容预留空间",
+    "description": "这里暂时只说明网站结构，不填充真实个人资料。后续可以更新此处配置，并替换 content/about/index.md。",
+    "file": "content/about/index.md"
+  },
+  "footerText": "原生 HTML、CSS 与 JavaScript，无构建步骤。"
+}
