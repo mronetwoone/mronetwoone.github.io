@@ -1,0 +1,14 @@
+{
+  "items": [
+    {
+      "id": "example-note",
+      "title": "示例文章：Markdown 能力检查",
+      "summary": "这篇示例内容覆盖标题、列表、表格、引用、链接与代码，用于检查统一阅读页。",
+      "date": "2026-07-10",
+      "tags": ["示例内容", "Markdown"],
+      "readingTime": "约 2 分钟",
+      "cover": "content/notes/example-note/images/cover.svg",
+      "file": "content/notes/example-note/index.md"
+    }
+  ]
+}
