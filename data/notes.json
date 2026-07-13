@@ -9,6 +9,15 @@
       "readingTime": "约 2 分钟",
       "cover": "content/notes/example-note/images/cover.svg",
       "file": "content/notes/example-note/index.md"
+    },
+	{
+      "id": "NP",
+      "title": "NP问题",
+      "date": "2026-07-12",
+      "tags": ["NP"],
+      "readingTime": "约 2 分钟",
+	  "cover": "",
+      "file": "content/notes/26-0713/NP问题.md"
     }
   ]
 }
